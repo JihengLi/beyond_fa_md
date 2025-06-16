@@ -16,11 +16,11 @@ ls /output/
 metric="md"
 
 # Find all dwi.mha files in /input
-dwi_mha_files=$(find /input/ -type f -name "*.mha")
+dwi_mha_files=$(find /input/images/dwi-4d-brain-mri -name "*.mha")
 
 for dwi_mha_file in $dwi_mha_files; do
     # Set up file names
-    json_file="${dwi_mha_file%.mha}.json"
+    json_file="/input/dwi-4d-acquisition-metadata.json"
     [[ ! -f $json_file ]] && { echo "Missing $json_file"; exit 1; }
 
     basename=$(basename $dwi_mha_file .mha)
