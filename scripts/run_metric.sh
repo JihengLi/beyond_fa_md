@@ -47,7 +47,7 @@ for dwi_mha_file in $dwi_mha_files; do
 
     echo "Creating mask, response, FODs, and peaks..."
     dwi2mask $nifti_file $tractseg_dir/nodif_brain_mask.nii.gz -fslgrad $bvec_path $bval_path
-    dwi2response tournier $nifti_file $tractseg_dir/response.txt -fslgrad $bvec_path $bval_path
+    dwi2response fa $nifti_file $tractseg_dir/response.txt -fslgrad $bvec_path $bval_path
     dwi2fod csd $nifti_file $tractseg_dir/response.txt $tractseg_dir/WM_FODs.nii.gz -mask $tractseg_dir/nodif_brain_mask.nii.gz -fslgrad $bvec_path $bval_path
     sh2peaks $tractseg_dir/WM_FODs.nii.gz $tractseg_dir/peaks.nii.gz -mask $tractseg_dir/nodif_brain_mask.nii.gz -fast
 
